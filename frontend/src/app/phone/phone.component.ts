@@ -51,12 +51,15 @@ export class PhoneComponent implements OnInit {
       let currentline = lines[i].split(",");
 
       for (let j = 0; j < headers.length; j++) {
-        obj[headers[j]] = currentline[j];
+        const hd = headers[j];
+        const strhd = String(hd);
+        obj[strhd] = currentline[j];
       }
 
       result.push(obj);
     }
-    return JSON.stringify(result); //JSON
+    console.log(result)
+    return result; //JSON
   }
 
   onFileChange(event) {
