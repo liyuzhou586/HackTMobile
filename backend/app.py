@@ -21,5 +21,11 @@ def about():
 def device():
     return giveUserPhoneOption()
 
+@app.route('/queryStuff1', methods=['POST'])
+def queryStuff1():
+    # {"queryParam": "query sample"}
+    jsonFormatParam = request.json['queryParam']
+    return queryFunc1(jsonFormatParam)
+
 if __name__ == '__main__':
     app.run()

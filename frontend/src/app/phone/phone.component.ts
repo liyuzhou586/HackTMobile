@@ -10,6 +10,7 @@ import {Subject} from 'rxjs';
 export class PhoneComponent implements OnInit {
   public stuff;
   public phone;
+  public queryResult;
   private _unsubscribe = new Subject<any>();
   constructor(private backendService: BackendService) { }
 
@@ -25,7 +26,14 @@ export class PhoneComponent implements OnInit {
   displayMembers() {
     this.backendService.aboutUs().subscribe(rs => {
       this.stuff = rs;
-    })
+    });
+  }
+
+  query(){
+    const queryJson = {"queryParam": "Kevinsito"};
+    this.backendService.queryStuff(queryJson).subscribe(rs => {
+      this.queryResult = rs;
+    });
   }
 
 }

@@ -2,11 +2,16 @@
   <li>
     <h2>Display Members</h2>
     <button (click)="displayMembers()">Click Me</button>
-    <h2>{{stuff}}</h2>
+    <h2 class="backendData">{{stuff}}</h2>
   </li>
   <li>
     <h2>Phone Recommmendations</h2>
-    <h2>{{phone}}</h2>
+    <h2 class="backendData">{{phone}}</h2>
     <button (click)="phoneRecommendation()">Click Me</button>
+  </li>
+  <li>
+    <h2>QUERY TESTING PART</h2>
+    <h2 class="backendData">{{queryResult}}</h2>
+    <button (click)="query()">Click Me</button>
   </li>
 </ul>
