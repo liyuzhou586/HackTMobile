@@ -7,7 +7,8 @@ data2 = np.load('data2.npy')
 header = data2.dtype.names
 
 def predict(json_input):
-    table = json.load(json_input)
+    print(json_input)
+    table = json_input
     count = 0
     data = []
     for row in table:
