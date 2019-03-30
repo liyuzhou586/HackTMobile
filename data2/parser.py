@@ -62,24 +62,24 @@ else:
 
 # Training
 # Split into test/train
-# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
-# clf = dt(max_depth=10)
-# print("Starting decision tree training...")
-# clf = clf.fit(x_train, y_train)
-# print("DT result: ", clf.score(x_test, y_test))
-# target_names = ['Not Churn', 'Churn']
-# y_pred = clf.predict(x_test)
-# print(classification_report(y_test, y_pred, target_names=target_names))
+clf = dt(max_depth=10)
+print("Starting decision tree training...")
+clf = clf.fit(x_train, y_train)
+print("DT result: ", clf.score(x_test, y_test))
+target_names = ['Not Churn', 'Churn']
+y_pred = clf.predict(x_test)
+print(classification_report(y_test, y_pred, target_names=target_names))
 
-# print("Starting SVM training...")
-# clf = SVC(C=1, kernel='rbf', gamma=0.125,
-#             decision_function_shape='ovr')
-# clf = clf.fit(x_train, y_train)
-# print("SVM result: ", clf.score(x_test, y_test))
-# target_names = ['Not Churn', 'Churn']
-# y_pred = clf.predict(x_test)
-# print(classification_report(y_test, y_pred, target_names=target_names))
+print("Starting SVM training...")
+clf = SVC(C=1, kernel='rbf', gamma=0.125,
+            decision_function_shape='ovr')
+clf = clf.fit(x_train, y_train)
+print("SVM result: ", clf.score(x_test, y_test))
+target_names = ['Not Churn', 'Churn']
+y_pred = clf.predict(x_test)
+print(classification_report(y_test, y_pred, target_names=target_names))
 
 print("Starting ANN training...")
 
