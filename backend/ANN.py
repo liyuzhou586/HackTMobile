@@ -6,9 +6,7 @@ clf = joblib.load('ANN.joblib')
 data2 = np.load('data2.npy')
 header = data2.dtype.names
 
-def predict(json_input):
-    print(json_input)
-    table = json_input
+def predict(table):
     count = 0
     data = []
     for row in table:
@@ -37,4 +35,5 @@ def predict(json_input):
                 print(h)
             for row in range(len(dat)):
                 x[row][i] = dat[row][0]
-    return clf.predict(x)
+    result = clf.predict(x).astype(str).astype(int)
+    return tuple(result)
