@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { PhoneComponent } from './phone/phone.component';
 import { BackendService } from './services/backend.service';
 import { D3vizComponent } from './d3viz/d3viz.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhoneComponent,
-    D3vizComponent
+    D3vizComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
