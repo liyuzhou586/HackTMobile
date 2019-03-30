@@ -1,18 +1,25 @@
-from flask import Flask, request 
+from flask import Flask, request
 from util import *
+from flask_cors import CORS
 app = Flask(__name__)
 
+CORS(app)
 
-@app.route('/')
-def hello():
-    return "Hello World!"
 
-@app.route('/about', methods=['GET', 'POST'])
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  return response
+
+@app.route('/about')
 def about():
-    if request.method == 'POST':
-        return doSomething(request.json)
-    else:
-        return giveUserPhoneOption()
+    return "Call Bob if you have any question"
+
+@app.route('/device', methods=['GET'])
+def device():
+    return giveUserPhoneOption()
 
 if __name__ == '__main__':
     app.run()
