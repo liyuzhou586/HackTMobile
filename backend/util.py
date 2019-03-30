@@ -12,3 +12,4 @@ def queryFunc1(queryParam):
     # Better to implement it in another file.
     #TODO: Impmentent real query algorithm.
     return queryParam
+    return ANN.predict(queryParam)
