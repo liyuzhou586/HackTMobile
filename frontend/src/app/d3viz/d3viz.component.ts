@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as d3 from "d3";
+import { BackendService } from '../services/backend.service';
 
 @Component({
   selector: 'app-d3viz',
@@ -7,19 +8,21 @@ import * as d3 from "d3";
   styleUrls: ['./d3viz.component.scss']
 })
 export class D3vizComponent implements OnInit {
-
-  constructor() { }
+  private queryRs;
+  
+  constructor(private backendService: BackendService) {
+    this.backendService.queryRs$.subscribe(rs => {
+      if(rs) {
+        this.queryRs = rs;
+      }
+    });
+  }
 
   ngOnInit() {
   }
 
-  clicked(event) {
-    d3.select(event.target)
-      .append('circle')
-      .attr('cx', event.x)
-      .attr('cy', event.y)
-      .attr('r', 10)
-      .attr('fill','red')
-  }
+
+
+  
 
 }
