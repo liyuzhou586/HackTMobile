@@ -8,26 +8,25 @@ header = data2.dtype.names
 
 def predict(json_input):
     table = json.loads(json_input)
-    data_new = []
+    count = 0
+    data = []
     for row in table:
-        row_new = []
-        for label in header:
-            if label != 'Churn':
-                row_new.append(row[label])
-        data_new.append(row_new)
-    data_new = np.array(data_new)
+        if count == 0:
+            header = row.keys()
+            data.append(list(header))
+            count += 1
+        data.append(list(row.values()))
+    data_new = np.array(data)
 
-    x = np.zeros((len(y), len(header)))
+    x = np.zeros((len(table), len(header)))
 
     for i, h in enumerate(header):
         if h != 'Churn':
             raw = data2[h]
             raw_new = data_new[h]
-            if raw.dtype == np.int32:
+            try:
                 dat = raw_new.astype(np.float64)
-            elif raw.dtype == np.float64:
-                dat = raw_new
-            else:
+            except ValueError:
                 dat = np.zeros(raw_new.shape)
                 vals = np.unique(raw)
                 for j, u in enumerate(vals):
