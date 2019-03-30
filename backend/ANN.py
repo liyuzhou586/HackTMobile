@@ -36,4 +36,4 @@ def predict(table):
             for row in range(len(dat)):
                 x[row][i] = dat[row][0]
     result = clf.predict(x).astype(str).astype(int)
-    return tuple(result)
+    return str(result)

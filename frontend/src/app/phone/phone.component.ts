@@ -46,6 +46,7 @@ export class PhoneComponent implements OnInit {
     let headers = lines[0].split(",");
 
     for (let i = 1; i < lines.length; i++) {
+      console.log('========== line ',i)
 
       let obj = {};
       let currentline = lines[i].split(",");
